@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Michael Odida | Technical Virtual Assistant & Operations Specialist</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- Modern CSS Custom Properties & Reset --- */
+        :root {
+            --primary-dark: #0f172a;    /* Deep professional slate 900 */
+            --primary-slate: #1e293b;   /* Slate 800 */
+            --accent-brand: #ea580c;    /* High-contrast dynamic orange 600 */
+            --accent-hover: #c2410c;    /* Rich burnt orange */
+            --text-main: #334155;       /* Slate 700 */
+            --text-muted: #64748b;      /* Slate 500 */
+            --bg-light: #f8fafc;        /* Soft crisp white/grey background */
+            --bg-card: #ffffff;
+            --border-subtle: #e2e8f0;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --shadow-sm: 0 4px 6px -1px rgba(15, 23, 42, 0.05);
+            --shadow-md: 0 12px 20px -8px rgba(15, 23, 42, 0.08);
+            --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--text-main);
+            background-color: #ffffff;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- Global Utility Layout Components --- */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px auto;
+        }
+
+        .section-title {
+            font-size: 2.25rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            letter-spacing: -0.03em;
+            margin-bottom: 16px;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+        }
+
+        /* --- Elegant Buttons --- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 32px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+            cursor: pointer;
+            border: none;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-brand);
+            color: #ffffff;
+            box-shadow: 0 4px 14px rgba(234, 88, 12, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(234, 88, 12, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-dark);
+            border: 2px solid var(--primary-slate);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-dark);
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        /* --- Fixed Top Header / Nav Navigation --- */
+        header {
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 1px 0px rgba(15, 23, 42, 0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 2000;
+            transition: var(--transition-smooth);
+        }
+
+        header.shrink {
+            padding: 5px 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
+        }
+
+        .nav-container {
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition-smooth);
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            letter-spacing: -0.04em;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--accent-brand);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--primary-slate);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--accent-brand);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-brand);
+            transition: var(--transition-smooth);
+        }
+
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+
+        .burger {
+            display: none;
+            cursor: pointer;
+            z-index: 2500;
+        }
+
+        .burger div {
+            width: 24px;
+            height: 2px;
+            background-color: var(--primary-dark);
+            margin: 6px 0;
+            transition: var(--transition-smooth);
+        }
+
+        /* --- Hero Section Presentation --- */
+        .hero-section {
+            background: radial-gradient(120% 120% at 0% 0%, #ffffff 60%, #fff7ed 100%);
+            padding-top: 160px;
+            padding-bottom: 120px;
+            overflow: hidden;
+        }
+
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: #ffedd5;
+            color: #c2410c;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            line-height: 1.15;
+            font-weight: 800;
+            color: var(--primary-dark);
+            letter-spacing: -0.04em;
+            margin-bottom: 24px;
+        }
+
+        .hero-title span {
+            color: var(--accent-brand);
+        }
+
+        .hero-description {
+            font-size: 1.15rem;
+            color: var(--text-main);
+            margin-bottom: 40px;
+            max-width: 580px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+        }
+
+        .hero-graphics {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .avatar-frame {
+            width: 380px;
+            height: 380px;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-slate) 100%);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            animation: morphingBlob 12s ease-in-out infinite alternate;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: var(--shadow-md);
+            border: 4px solid #ffffff;
+            outline: 1px solid var(--border-subtle);
+            overflow: hidden;
+        }
+
+        .avatar-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top; 
+            opacity: 1;
+        }
+
+        .floating-pill {
+            position: absolute;
+            background: #ffffff;
+            padding: 12px 20px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-md);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--primary-dark);
+            border: 1px solid var(--border-subtle);
+            z-index: 10;
+        }
+
+        .pill-1 { top: 5%; left: -20px; animation: floatAnim 4s ease-in-out infinite alternate; }
+        .pill-2 { bottom: 10%; right: -10px; animation: floatAnim 4s ease-in-out infinite alternate 1.5s; }
+
+        .floating-pill i {
+            padding: 8px;
+            border-radius: 8px;
+            background-color: #f1f5f9;
+            color: var(--accent-brand);
+        }
+
+        /* --- Value Proposition / About Metrics Section --- */
+        .about-section {
+            background-color: var(--bg-light);
+            border-top: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+        }
+
+        .value-card {
+            background: var(--bg-card);
+            padding: 40px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-subtle);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-smooth);
+        }
+
+        .value-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+            border-color: #fed7aa;
+        }
+
+        .value-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 12px;
+            background-color: #fff7ed;
+            color: var(--accent-brand);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 24px;
+        }
+
+        .value-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 12px;
+        }
+
+        /* --- Comprehensive Hybrid Services Section --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--bg-card);
+            padding: 40px 32px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-subtle);
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: var(--primary-dark);
+            transition: var(--transition-smooth);
+            transform: scaleX(0);
+            transform-origin: left;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+            background-color: var(--accent-brand);
+        }
+
+        .service-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-4px);
+        }
+
+        .service-icon {
+            font-size: 2.2rem;
+            color: var(--primary-slate);
+            margin-bottom: 24px;
+            display: inline-block;
+        }
+
+        .service-card:hover .service-icon {
+            color: var(--accent-brand);
+            animation: pulseIcon 0.4s ease-in-out;
+        }
+
+        .service-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 14px;
+        }
+
+        .service-card p {
+            font-size: 0.95rem;
+            color: var(--text-main);
+        }
+
+        /* --- Tools & Software Stack Matrix Section --- */
+        .tools-section {
+            background-color: #ffffff;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+        }
+
+        .tool-category-card {
+            background-color: var(--bg-light);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 24px;
+        }
+
+        .tool-category-card h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            border-bottom: 2px solid var(--border-subtle);
+            padding-bottom: 8px;
+        }
+
+        .tool-list {
+            list-style: none;
+        }
+
+        .tool-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--primary-slate);
+        }
+
+        .tool-item i {
+            color: var(--accent-brand);
+            font-size: 1rem;
+            width: 16px;
+            text-align: center;
+        }
+
+        /* --- Proof of Impact Portfolio/Case Studies --- */
+        .portfolio-section {
+            background-color: var(--bg-light);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+
+        .portfolio-card {
+            background-color: var(--bg-card);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-subtle);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition-smooth);
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .portfolio-visual-meta {
+            height: 240px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            background-color: var(--primary-dark);
+        }
+
+        .portfolio-visual-meta img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-smooth);
+        }
+
+        .portfolio-card:hover .portfolio-visual-meta img {
+            transform: scale(1.05);
+        }
+
+        .tag-pill {
+            position: absolute;
+            top: 24px;
+            left: 24px;
+            background-color: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            color: #ffffff;
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 5;
+        }
+
+        .portfolio-content {
+            padding: 40px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .portfolio-content h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .portfolio-content p {
+            font-size: 0.98rem;
+            color: var(--text-main);
+            margin-bottom: 24px;
+        }
+
+        .metrics-callout {
+            margin-top: auto;
+            background-color: var(--bg-light);
+            border-radius: var(--radius-md);
+            padding: 16px 24px;
+            border: 1px solid var(--border-subtle);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .metrics-callout i {
+            color: var(--accent-brand);
+            font-size: 1.2rem;
+        }
+
+        .metrics-callout span {
+            font-weight: 700;
+            color: var(--primary-dark);
+            font-size: 0.95rem;
+        }
+
+        /* --- Educational & Academic Credentials Section --- */
+        .cert-section {
+            background-color: #ffffff;
+            border-top: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+        
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 40px;
+            margin-top: 20px;
+        }
+        
+        .cert-card {
+            background: var(--bg-light);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 40px 32px;
+            text-align: center;
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+        
+        .cert-card:hover {
+            transform: translateY(-5px);
+            border-color: #fed7aa;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .cert-badge-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #fff7ed;
+            color: var(--accent-brand);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 24px;
+            border: 2px solid #ffedd5;
+            transition: var(--transition-smooth);
+        }
+        
+        .cert-card:hover .cert-badge-icon {
+            background-color: var(--primary-dark);
+            color: #ffffff;
+            border-color: var(--primary-dark);
+        }
+        
+        .institution-name {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+        
+        .program-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--accent-brand);
+            margin-bottom: 16px;
+        }
+        
+        .program-divider {
+            width: 60px;
+            height: 3px;
+            background-color: var(--border-subtle);
+            margin: 0 auto 16px auto;
+            border-radius: 2px;
+        }
+        
+        .cert-card:hover .program-divider {
+            background-color: var(--accent-brand);
+        }
+        
+        .cert-description {
+            font-size: 0.95rem;
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* --- Engagement Models / Pricing Retainers --- */
+        .packages-section {
+            background-color: var(--bg-light);
+        }
+
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+
+        .package-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 40px 32px;
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition-smooth);
+        }
+
+        .package-card.popular {
+            border-color: var(--accent-brand);
+            box-shadow: var(--shadow-md);
+            position: relative;
+        }
+
+        .package-ribbon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #ffedd5;
+            color: #c2410c;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .package-card h3 {
+            font-size: 1.4rem;
+            color: var(--primary-dark);
+            margin-bottom: 8px;
+        }
+
+        .package-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+
+        .package-features {
+            list-style: none;
+            margin-bottom: 32px;
+            flex-grow: 1;
+        }
+
+        .package-features li {
+            font-size: 0.95rem;
+            color: var(--text-main);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .package-features li i {
+            color: #22c55e;
+        }
+
+        /* --- Premium CTA Contact Form Section --- */
+        .contact-section {
+            background-color: var(--primary-dark);
+            color: #ffffff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-section .section-title {
+            color: #ffffff;
+        }
+
+        .contact-section .section-subtitle {
+            color: #94a3b8;
+        }
+
+        .contact-wrapper {
+            max-width: 650px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .contact-card-form {
+            background-color: var(--primary-slate);
+            padding: 50px;
+            border-radius: var(--radius-lg);
+            border: 1px solid #334155;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .form-row-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-element {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .form-element label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #cbd5e1;
+            margin-bottom: 8px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 14px 18px;
+            border-radius: var(--radius-md);
+            border: 1px solid #475569;
+            background-color: #0f172a;
+            color: #ffffff;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: var(--transition-smooth);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-brand);
+            box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.15);
+        }
+
+        /* Modern styled drop-down wrappers */
+        .select-wrapper {
+            position: relative;
+        }
+
+        .select-wrapper::after {
+            content: '\f078';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            right: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+            pointer-events: none;
+            font-size: 0.85rem;
+        }
+
+        .form-control.select-field {
+            padding-right: 45px;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            cursor: pointer;
+        }
+
+        .submit-btn-block {
+            width: 100%;
+            padding: 16px;
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+
+        .status-message {
+            margin-top: 20px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.95rem;
+            min-height: 24px;
+            transition: var(--transition-smooth);
+        }
+
+        .status-message.success { color: #22c55e; }
+        .status-message.error { color: #ef4444; }
+
+        /* --- Footer Component --- */
+        footer {
+            background-color: #020617;
+            color: #64748b;
+            padding: 40px 0;
+            border-top: 1px solid #0f172a;
+            font-size: 0.95rem;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-socials a {
+            color: #475569;
+            font-size: 1.25rem;
+            transition: var(--transition-smooth);
+            text-decoration: none;
+        }
+
+        .footer-socials a:hover {
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        /* --- Unique Keyframe Micro-Animations --- */
+        @keyframes morphingBlob {
+            0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+            50% { border-radius: 65% 35% 40% 60% / 60% 38% 62% 40%; }
+            100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+        }
+
+        @keyframes floatAnim {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-12px); }
+        }
+
+        @keyframes pulseIcon {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+            100% { transform: scale(1); }
+        }
+
+        /* --- Fully Responsive Breakpoints & Adaptive Layouts --- */
+        @media (max-width: 992px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 50px;
+            }
+            .hero-description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-buttons {
+                justify-content: center;
+            }
+            .hero-graphics {
+                margin-top: 20px;
+            }
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            section { padding: 70px 0; }
+            .section-title { font-size: 1.85rem; }
+            .hero-title { font-size: 2.6rem; }
+            
+            .burger { display: block; }
+            
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 360px;
+                height: 100vh;
+                background-color: #ffffff;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 100px 40px;
+                gap: 30px;
+                box-shadow: -10px 0 30px rgba(15, 23, 42, 0.1);
+                transition: var(--transition-smooth);
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .form-row-split {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .contact-card-form {
+                padding: 30px 20px;
+            }
+
+            .avatar-frame {
+                width: 290px;
+                height: 290px;
+            }
+            .pill-1, .pill-2 { display: none; }
+            
+            .footer-container {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+
+            .burger.toggle .line1 { transform: rotate(-45deg) translate(-5px, 6px); }
+            .burger.toggle .line2 { opacity: 0; }
+            .burger.toggle .line3 { transform: rotate(45deg) translate(-5px, -6px); }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="siteHeader">
+        <div class="container nav-container">
+            <a href="#home" class="logo">Michael<span>Odida</span></a>
+            <nav>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#value" class="nav-link">Why Me</a></li>
+                    <li><a href="#services" class="nav-link">VA Services</a></li>
+                    <li><a href="#tools" class="nav-link">Tools</a></li>
+                    <li><a href="#portfolio" class="nav-link">Case Proof</a></li>
+                    <li><a href="#credentials" class="nav-link">Credentials</a></li>
+                    <li><a href="#packages" class="nav-link">Packages</a></li>
+                    <li><a href="#contact" class="btn btn-secondary" style="padding: 8px 20px; font-size: 0.88rem;">Hire Me</a></li>
+                </ul>
+            </nav>
+            <div class="burger" id="menuBurger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </div>
+    </header>
+
+    <section id="home" class="hero-section">
+        <div class="container hero-container">
+            <div class="hero-content-box">
+                <div class="hero-badge">
+                    <i class="fa-solid fa-handshake"></i> 6+ Years of Proven Industry Experience
+                </div>
+                <h1 class="hero-title">High-level admin execution backed by <span>6 years of technical skill.</span></h1>
+                <p class="hero-description">
+                    Hi, I'm Michael Odida. I operate as a strategic 
+                    Technical Virtual Assistant for executive teams and 
+                    founders—blending 6+ years of professional backend management, 
+                    system metrics tracking, and corporate project coordination.
+                </p>
+                <p><b>Email:</b> mikeodida@gmail.com</p>
+                <br><br>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary"><i class="fa-solid fa-calendar-check"></i> Request VA Support</a>
+                    <a href="#services" class="btn btn-secondary">View Service Pillars</a>
+                </div>
+            </div>
+            <div class="hero-graphics">
+                <div class="avatar-frame">
+                    <img src="images/pic.jpeg" alt="Michael Odida Profile Portrait">
+                </div>
+                <div class="floating-pill pill-1">
+                    <i class="fa-solid fa-toolbox"></i> Tech Stack Maintenance
+                </div>
+                <div class="floating-pill pill-2">
+                    <i class="fa-solid fa-envelope"></i> Executive Communications
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="value" class="about-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">The Technical VA Edge</h2>
+                <p class="section-subtitle">Most assistants stop at emails. I bridge over 6 years of day-to-day administrative coordination directly into your technical infrastructure.</p>
+            </div>
+            <div class="value-grid">
+                <div class="value-card">
+                    <div class="value-icon"><i class="fa-solid fa-code-merge"></i></div>
+                    <h3>6+ Years of Tech Management</h3>
+                    <p>Unlike standard assistants, I bring over half a decade of structural modifications, minor app updates, repository checks, database management, and tracking scripts natively in Laravel, React, or Vite environments.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon"><i class="fa-solid fa-chart-pie"></i></div>
+                    <h3>Metrics &amp; System Audits</h3>
+                    <p>I build unified frameworks to map performance indicators across organizational systems, gather cross-department metrics, and present clean dashboard snapshots to management.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon"><i class="fa-solid fa-user-shield"></i></div>
+                    <h3>C-Suite Communication Protocol</h3>
+                    <p>Experienced in high-level executive support. I confidently draft stakeholder sync updates, formal proposals, and process reports to align organizational metrics effectively.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" style="padding: 40px 0; background: #ffffff;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Service Pillars</h2>
+                <p class="section-subtitle">Operational support mapped precisely to professional administrative and infrastructure requirements.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                    <h3>Technical Operations</h3>
+                    <p>Database synchronization audits, app repository status checks, package optimization monitoring, and light script customizations.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-folder-tree"></i></div>
+                    <h3>Systems Administration</h3>
+                    <p>Configuring operational dashboards, digital workspace structure cleanup, workflow auto-triggers, and granular account provisioning audits.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-business-time"></i></div>
+                    <h3>Executive Coordination</h3>
+                    <p>Corporate reporting, multi-partner engagement oversight, dynamic layout production, and high-level calendar architecture management.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tools" class="tools-section" style="padding: 60px 0;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Engineered Stack &amp; Software Matrix</h2>
+                <p class="section-subtitle">Advanced proficiency across infrastructure, optimization, and reporting tools.</p>
+            </div>
+            <div class="tools-grid">
+                <div class="tool-category-card">
+                    <h3>Environments</h3>
+                    <ul class="tool-list">
+                        <li class="tool-item"><i class="fa-solid fa-circle-check"></i> Laravel Ecosystem</li>
+                        <li class="tool-item"><i class="fa-solid fa-circle-check"></i> React Framework</li>
+                        <li class="tool-item"><i class="fa-solid fa-circle-check"></i> Tailwind &amp; Vite</li>
+                    </ul>
+                </div>
+                <div class="tool-category-card">
+                    <h3>Data &amp; Portals</h3>
+                    <ul class="tool-list">
+                        <li class="tool-item"><i class="fa-solid fa-circle-check"></i> MySQL / Postgre SQL</li>
+                        <li class="tool-item"><i class="fa-solid fa-circle-check"></i> AWS / Cloud Portals</li>
+                        <li class="tool-item"><i class="fa-solid fa-circle-check"></i> GitHub Environments</li>
+                    </ul>
+                </div>
+                <div class="tool-category-card">
+                    <h3>Operations</h3>
+                    <ul class="tool-list">
+                        <li class="tool-item"><i class="fa-solid fa-circle-check"></i> Notion / ClickUp Workspace</li>
+                        <li class="tool-item"><i class="fa-solid fa-circle-check"></i> Slack API / Auto-Triggers</li>
+                        <li class="tool-item"><i class="fa-solid fa-circle-check"></i> Zapier Orchestrations</li>
+                    </ul>
+                </div>
+                <div class="tool-category-card">
+                    <h3>Design / Media</h3>
+                    <ul class="tool-list">
+                        <li class="tool-item"><i class="fa-solid fa-circle-check"></i> Figma Enterprise UI</li>
+                        <li class="tool-item"><i class="fa-solid fa-circle-check"></i> Adobe Creative Core</li>
+                        <li class="tool-item"><i class="fa-solid fa-circle-check"></i> MS PowerPoint Pro</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="portfolio-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Proof of Impact Case Studies</h2>
+                <p class="section-subtitle">Real metrics driven by structuring technical infrastructure and professional administrative protocols.</p>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-card">
+                    <div class="portfolio-visual-meta">
+                        <span class="tag-pill">Internal Infrastructure</span>
+                        <img src="images/2.png" alt="Digital IT Asset Recovery Clearance System Interface Layout">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Digital IT Asset Recovery Clearance System</h3>
+                        <p>Designed and structured an automated dashboard logic to securely manage hardware offboarding and service access deactivations. Standardized cross-department exit protocol data to eliminate processing leakages and secure end-to-end asset visibility across systems.</p>
+                        <div class="metrics-callout">
+                            <i class="fa-solid fa-bolt"></i>
+                            <span>Outcome: Eliminated asset leakage &amp; secured infrastructure visibility</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-card">
+                    <div class="portfolio-visual-meta">
+                        <span class="tag-pill">Operations &amp; Design</span>
+                        <img src="images/1.png" alt="Scojeys Enterprise Profile and Healthcare Campaign Collateral Display">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Corporate Profiles &amp; Campaign Collateral</h3>
+                        <p>Drafted and styled a comprehensive business landscape profile for Scojeys Enterprise alongside precisely aligned promotional visual announcements for collaborative community health initiatives. Ensured meticulous, high-grade compliance execution across national platforms.</p>
+                        <div class="metrics-callout">
+                            <i class="fa-solid fa-shield-halved"></i>
+                            <span>Outcome: 100% brand uniformity achieved across all national initiatives</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="credentials" class="cert-section" style="padding: 80px 0;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Academic &amp; Professional Credentials</h2>
+                <p class="section-subtitle">Verified educational foundation backing my technical and administrative execution layout.</p>
+            </div>
+            <div class="cert-grid">
+                <div class="cert-card">
+                    <div class="cert-badge-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <div class="institution-name">Strathmore University</div>
+                    <div class="program-title">Bachelor of Business Information Technology</div>
+                    <div class="program-divider"></div>
+                    <p class="cert-description">Rigorous formal training in systems architecture, advanced database management, structured logical engineering, and backend security implementations.</p>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-badge-icon"><i class="fa-solid fa-certificate"></i></div>
+                    <div class="institution-name">ALX Africa</div>
+                    <div class="program-title">Advanced Virtual Assistant Certification</div>
+                    <div class="program-divider"></div>
+                    <p class="cert-description">Focused professional certification mastering executive operations, complex calendar architecture, stakeholders sync, project tracking, and agile administrative agility.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="packages" class="packages-section" style="padding: 80px 0;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Strategic Engagement Retainers</h2>
+                <p class="section-subtitle">Flexible structures built to inject technical virtual support into your operations smoothly.</p>
+            </div>
+            <div class="packages-grid">
+                <div class="package-card">
+                    <h3>Operational Base</h3>
+                    <p class="package-desc">Perfect for growing startups needing steady stack and communication maintenance.</p>
+                    <ul class="package-features">
+                        <li><i class="fa-solid fa-circle-check"></i> 20 Hours Weekly Support</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Slack &amp; Email Communications</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Basic Dashboard &amp; App Tracking</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Weekly Progress Metrics Reports</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-secondary">Select Retainer</a>
+                </div>
+                <div class="package-card popular">
+                    <span class="package-ribbon">Highly Requested</span>
+                    <h3>Technical Executive Pro</h3>
+                    <p class="package-desc">Comprehensive support matching deep administrative mastery with live codebase monitoring.</p>
+                    <ul class="package-features">
+                        <li><i class="fa-solid fa-circle-check"></i> Full-Time Dedicated Support (40 hrs)</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Priority System Updates (Laravel/React)</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Unified C-Suite Metric Dashboards</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Multi-Partner Channel Governance</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary">Secure Retainer Support</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Initiate Technical VA Support</h2>
+            <p class="section-subtitle">Let's offload structural management bottlenecks from your schedule. Submit your operational scope below.</p>
+        </div>
+        <div class="contact-wrapper">
+            <div class="contact-card-form">
+                <form id="portfolioContactForm" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+                    <div class="form-row-split">
+                        <div class="form-element">
+                            <label for="clientName">Full Name</label>
+                            <input type="text" name="name" id="clientName" class="form-control" placeholder="Mercy Kamau" required>
+                        </div>
+                        <div class="form-element">
+                            <label for="clientEmail">Corporate Email</label>
+                            <input type="email" name="email" id="clientEmail" class="form-control" placeholder="mercy@organization.co.ke" required>
+                        </div>
+                    </div>
+                    <div class="form-element">
+                        <label for="serviceRequirement">Primary Operational Bottleneck</label>
+                        <div class="select-wrapper">
+                            <select name="service" id="serviceRequirement" class="form-control select-field" required>
+                                <option value="" disabled selected>Select an operational focus area...</option>
+                                <option value="technical_ops">Technical Operations (Code base, Repo, DB tracking)</option>
+                                <option value="systems_admin">Systems Administration (Dashboard setups, Workspace audits)</option>
+                                <option value="executive_support">Executive Coordination (Reporting, Calendar architectures)</option>
+                                <option value="comprehensive_pro">Comprehensive Pro Retainer Support Plan</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-element">
+                        <label for="projectScope">Scope Description &amp; Targets</label>
+                        <textarea name="message" id="projectScope" class="form-control" rows="5" placeholder="Outline your system maintenance parameters, target metrics, or operational workflow requirements..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary submit-btn-block">
+                        <i class="fa-solid fa-paper-plane"></i> Deploy Engagement Request
+                    </button>
+                </form>
+                <div id="formStatusBox" class="status-message"></div>
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <footer>
+        <div class="container footer-container">
+            <p>&copy; 2026 Michael Odida. Engineered with precision. All Rights Reserved throughout Kenya.</p>
+            <div class="footer-socials">
+                <a href="https://www.linkedin.com/in/michael-odida-8a21911b0/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://github.com" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i></a>
+                <a href="mailto:mikeodida@gmail.com" title="Email Me"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    const form = document.getElementById('portfolioContactForm');
+    const status = document.getElementById('formStatusBox');
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        // Show loading state
+        status.innerHTML = "Deploying request...";
+        status.classList.remove('success', 'error');
+
+        const data = new FormData(form);
+        try {
+            const response = await fetch(form.action, {
+                method: form.method,
+                body: data,
+                headers: { 'Accept': 'application/json' }
+            });
+
+            if (response.ok) {
+                status.innerHTML = "Request deployed successfully! I'll be in touch.";
+                status.classList.add('success');
+                form.reset();
+            } else {
+                throw new Error("Submission failed");
+            }
+        } catch (error) {
+            status.innerHTML = "Oops! There was a problem submitting your request.";
+            status.classList.add('error');
+        }
+    });
+</script>
+    <script>
+        // --- Interactive Header Management ---
+        const siteHeader = document.getElementById('siteHeader');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 40) {
+                siteHeader.classList.add('shrink');
+            } else {
+                siteHeader.classList.remove('shrink');
+            }
+        });
+
+        // --- Responsive Mobile Nav Architecture ---
+        const menuBurger = document.getElementById('menuBurger');
+        const navMenu = document.getElementById('navMenu');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        menuBurger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            menuBurger.classList.toggle('toggle');
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                menuBurger.classList.remove('toggle');
+            });
+        });
+
+        // --- Smooth Active Link Highlight Mapping ---
+        const sectionsList = document.querySelectorAll('section');
+        window.addEventListener('scroll', () => {
+            let currentActiveSection = '';
+            sectionsList.forEach(section => {
+                const sectionTopOffset = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= (sectionTopOffset - 220)) {
+                    currentActiveSection = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentActiveSection}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // --- Structured Form Processing Real-Time Feedback ---
+        document.getElementById('portfolioContactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formStatusBox = document.getElementById('formStatusBox');
+            
+            formStatusBox.className = "status-message success";
+            formStatusBox.innerText = "Transmitting metrics configuration... Engagement request successfully deployed!";
+            
+            this.reset();
+            setTimeout(() => { formStatusBox.innerText = ""; }, 5000);
+        });
+    </script>
+</body>
+</html>
